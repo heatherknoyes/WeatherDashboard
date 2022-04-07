@@ -30,12 +30,14 @@
               id="cityChoice"
               placeholder="New York"
             />
+            <label for="stateCodeList">State</label>
+            <select name="stateCodes" id="stateCodeList"></select>
           </div>
           <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
             Search
           </button>
           <br></br>
-          <button type="submit" class="btn btn-block" id="submitBtn">
+          <!-- <button type="submit" class="btn btn-block" id="submitBtn">
             City1
           </button>
           <button type="submit" class="btn btn-block" id="submitBtn">
@@ -46,47 +48,41 @@
           </button>
           <button type="submit" class="btn btn-block" id="submitBtn">
             City4
-          </button>
+          </button> -->
         </form>
         <section class="col-9" >
-          <div id="today">
-            <h1>City Name Here with today's date</h1>
-            <h3>Temp: Variable Temp Here</h3>
-            <h3>Wind: Variable Wind Here</h3>
-            <h3>Humidity: Variable Humidity Here</h3>
-            <h3>UV Index: Variable UV Index with Color Here</h3>
-          </div>
+          <div id="today"></div>
           <h1>5-Day Forecast</h1>
           <div class="d-flex justify-content-between" id="futurecast">
-            <div class="card">
+            <div class="card bg-dark text-light">
               <h3>Day1</h3>
               <h4>ICON</h4>
               <h4>Temp: XX</h4>
               <h4>Wind: XX</h4>
               <h4>Humidity: XX</h4>
             </div>
-            <div class="card">
+            <div class="card bg-dark text-light">
               <h3>Day2</h3>
               <h4>ICON</h4>
               <h4>Temp: XX</h4>
               <h4>Wind: XX</h4>
               <h4>Humidity: XX</h4>
             </div>
-            <div class="card">
+            <div class="card bg-dark text-light">
               <h3>Day3</h3>
               <h4>ICON</h4>
               <h4>Temp: XX</h4>
               <h4>Wind: XX</h4>
               <h4>Humidity: XX</h4>
             </div>
-            <div class="card">
+            <div class="card bg-dark text-light">
               <h3>Day4</h3>
               <h4>ICON</h4>
               <h4>Temp: XX</h4>
               <h4>Wind: XX</h4>
               <h4>Humidity: XX</h4>
             </div>
-            <div class="card">
+            <div class="card bg-dark text-light">
               <h3>Day5</h3>
               <h4>ICON</h4>
               <h4>Temp: XX</h4>
@@ -99,6 +95,8 @@
     </main>
     <footer></footer>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    
   <script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -114,5 +112,6 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"
   ></script>
+  <script src="./assets/js/config.js"></script>
   <script src="./assets/js/script.js"></script>
 </html>
