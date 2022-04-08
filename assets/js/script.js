@@ -128,7 +128,6 @@ function oneCallData(citySearch, lat, lon) {
       //console.log(data.daily[0]);
       data.daily.forEach(function (day, i) {
         var iconcode = day.weather[0].icon;
-        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
 
         if (i === 0) {
           // populate the today element
@@ -137,11 +136,12 @@ function oneCallData(citySearch, lat, lon) {
             <h3>Temp: ${data.current.temp}\u00B0F</h3>
             <h3>Wind: ${data.current.wind_speed} MPH</h3>
             <h3>Humidity: ${data.current.humidity} %</h3>
-            <h3>UV Index: ${data.current.uvi}</h3>`
+            <h3 id="uvi">UV Index: ${data.current.uvi}</h3>`
           );
         } else if (i < 6) {
+          iconcode = day.weather[0].icon;
           var dateString = moment.unix(day.dt).format("MM/DD/YYYY");
-          console.log(day);
+          // console.log(iconcode);
           var dayEl = $(`<div class="card bg-dark text-light">
           <h3>${dateString}</h3>
           <h4><span id="icon"><img id="wicon" src="" alt="Weather icon"></span></h4>
@@ -152,9 +152,25 @@ function oneCallData(citySearch, lat, lon) {
 
           $("#futurecast").append(dayEl);
         }
+
+        colorUVIBox(data.current.uvi);
+        console.log(iconcode);
+        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
         $("#wicon").attr("src", iconurl);
       });
     });
+}
+
+function colorUVIBox(uvi) {
+  if (uvi <= 3) {
+    $("#uvi").css("background-color", "green");
+  } else if (uvi > 3 && uvi <= 6) {
+    $("#uvi").css("background-color", "yellow");
+  } else if (uvi > 6 && uvi <= 8) {
+    $("#uvi").css("background-color", "orange");
+  } else {
+    $("#uvi").css("background-color", "red");
+  }
 }
 
 function populateTodayData(citySearch) {
