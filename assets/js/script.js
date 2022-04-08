@@ -32,7 +32,6 @@ $("#submitBtn").on("click", function (event) {
 /* Using event delegation to populate the call with the prior buttons */
 $(".previousSearches").on("click", function (event) {
   event.preventDefault();
-  // overriding global? Is this a good idea?
   citySearch = $(event.target).text().trim();
   getCityData(citySearch);
 });
@@ -133,7 +132,7 @@ function getCityData(citySearch) {
   //   `http://api.openweathermap.org/geo/1.0/direct?q=${citySearch},{state code},{country code}&limit=1&appid=${APIKey}`
 
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${citySearch}&limit=1&appid=${APIKey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${citySearch}&limit=1&appid=${APIKey}`
   )
     .then(function (response) {
       return response.json();
