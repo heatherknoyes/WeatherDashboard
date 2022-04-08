@@ -18,7 +18,7 @@ $("#submitBtn").on("click", function (event) {
       localStorage.setItem("citySearch", JSON.stringify(citySearchArray));
     }
     if (!citySearchArray.includes(citySearch.val())) {
-      if (citySearchArray.length == 5) {
+      if (citySearchArray.length == 10) {
         citySearchArray.pop();
       }
       citySearchArray.unshift(citySearch.val());
