@@ -22,11 +22,11 @@ $("#submitBtn").on("click", function (event) {
         citySearchArray.pop();
       }
       citySearchArray.unshift(citySearch.val());
-      populatePastSearchCities(citySearchArray);
     }
+    populatePastSearchCities(citySearchArray);
     getCityData(citySearch.val());
-    $("#cityChoice").val("");
   }
+  $("#cityChoice").val("");
 });
 
 /* Using event delegation to populate the call with the prior buttons */
