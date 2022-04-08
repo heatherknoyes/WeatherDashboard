@@ -1,13 +1,17 @@
 //https://openweathermap.org/api/one-call-api
 var citySearch = $("#cityChoice");
-var citySearchBtn = $("#submitBtn");
-var defaultCity = "Atlanta";
+var defaultCity = "New York";
 var APIKey = config.API_KEY;
 
+function init() {
+  populateStateCodes();
+  displayLastSearch();
+}
+
 // need to use event delegation in order to populate the search bar with the button text of the element that the user picks
-citySearchBtn.on("click", function (event) {
+$("#submitBtn").on("click", function (event) {
   event.preventDefault();
-  // Here I need to make sure that the first city I press that the button shows up
+
   if (citySearch.val()) {
     var citySearchArray = JSON.parse(localStorage.getItem("citySearch"));
     if (!citySearchArray) {
@@ -15,25 +19,34 @@ citySearchBtn.on("click", function (event) {
       localStorage.setItem("citySearch", JSON.stringify(citySearchArray));
     }
     if (!citySearchArray.includes(citySearch.val())) {
-      citySearchArray.push(citySearch.val());
-      localStorage.setItem("citySearch", JSON.stringify(citySearchArray));
-      var cityBtnEl =
-        $(`<button type="submit" class="btn btn-primary btn-block" id="cityBtn">
-        ${citySearch.val()}
-      </button>`);
-      $(".previousSearches").append(cityBtnEl);
+      if (citySearchArray.length == 5) {
+        citySearchArray.pop();
+      }
+      citySearchArray.unshift(citySearch.val());
+      populatePastSearchCities(citySearchArray);
     }
     getCityData(citySearch.val());
   }
-  // else {
-  //   getCityData(defaultCity);
-  // }
 });
 
-function init() {
-  populateStateCodes();
-  // Probably would save the last search in order to populate to the screen
-  displayLastSearch();
+/* Using event delegation to populate the call with the prior buttons */
+$(".previousSearches").on("click", function (event) {
+  event.preventDefault();
+  // overriding global? Is this a good idea?
+  citySearch = $(event.target).text().trim();
+  getCityData(citySearch);
+});
+
+function populatePastSearchCities(citySearchArray) {
+  $(".previousSearches").html("");
+  localStorage.setItem("citySearch", JSON.stringify(citySearchArray));
+  citySearchArray.forEach(function (city) {
+    var cityBtnEl =
+      $(`<button type="submit" class="btn btn-primary btn-block" id="cityBtn">
+        ${city}
+      </button>`);
+    $(".previousSearches").append(cityBtnEl);
+  });
 }
 
 function populateStateCodes() {
@@ -103,19 +116,14 @@ function populateStateCodes() {
   });
 }
 
+/* Displays the last item searched from the array */
 function displayLastSearch() {
   $(".previousSearches").html("");
   citySearchArray = JSON.parse(localStorage.getItem("citySearch"));
 
   if (citySearchArray) {
-    citySearchArray.forEach(function (city) {
-      var cityBtnEl =
-        $(`<button type="submit" class="btn btn-primary btn-block cityBtn">
-      ${city}
-    </button>`);
-      $(".previousSearches").append(cityBtnEl);
-    });
-    getCityData(citySearchArray[citySearchArray.length - 1]);
+    populatePastSearchCities(citySearchArray);
+    getCityData(citySearchArray[0]);
   } else {
     getCityData(defaultCity);
   }
@@ -193,26 +201,5 @@ function colorUVIBox(uvi) {
     $("#uvi").css("background-color", "red");
   }
 }
-
-// function populateTodayData(citySearch) {
-//   // localStorage.setItem("citySearch", citySearch);
-
-//   // fetch the result from the API to fill today's data
-//   fetch(
-//     `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${APIKey}&units=imperial`,
-//     {
-//       // The browser fetches the resource from the remote server without first looking in the cache.
-//       // The browser will then update the cache with the downloaded resource.
-//       cache: "reload",
-//     }
-//   )
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       // populate the today element
-//       oneCallData(citySearch, data.coord.lat, data.coord.lon);
-//     });
-// }
 
 init();
