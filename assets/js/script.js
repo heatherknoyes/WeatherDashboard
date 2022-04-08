@@ -183,7 +183,7 @@ function oneCallData(citySearch, lat, lon) {
           $("#futurecast").append(dayEl);
         }
 
-        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        var iconurl = "https://openweathermap.org/img/w/" + iconcode + ".png";
         $(`#wicon${i}`).attr("src", iconurl);
       });
     });
