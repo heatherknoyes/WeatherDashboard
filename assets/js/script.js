@@ -1,6 +1,7 @@
 //https://openweathermap.org/api/one-call-api
 var citySearch = $("#cityChoice");
 var citySearchBtn = $("#submitBtn");
+
 var APIKey = config.API_KEY;
 
 //https://api.openweathermap.org/data/2.5/weather?q={citySearch}&appid={APIKey}
@@ -106,7 +107,6 @@ function getCityData(citySearch) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       oneCallData(citySearch, data[0].lat, data[0].lon);
     });
 }
@@ -124,7 +124,6 @@ function oneCallData(citySearch, lat, lon) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       //console.log(data.daily[0]);
       data.daily.forEach(function (day, i) {
         var iconcode = day.weather[0].icon;
@@ -136,16 +135,17 @@ function oneCallData(citySearch, lat, lon) {
             <h3>Temp: ${data.current.temp}\u00B0F</h3>
             <h3>Wind: ${data.current.wind_speed} MPH</h3>
             <h3>Humidity: ${data.current.humidity} %</h3>
-            <h3 id="uvi">UV Index: ${data.current.uvi}</h3>`
+            <h3>UV Index: <span id="uvi">${data.current.uvi}</span></h3>`
           );
+          colorUVIBox(data.current.uvi);
         } else if (i < 6) {
           iconcode = day.weather[0].icon;
           var dateString = moment.unix(day.dt).format("MM/DD/YYYY");
-          // console.log(iconcode);
           var dayEl = $(`<div class="card bg-dark text-light">
           <h3>${dateString}</h3>
           <h4><span id="icon"><img id="wicon${i}" src="" alt="Weather icon"></span></h4>
-          <h4>Temp: XX</h4>
+          <h4>High: ${day.temp.max}\u00B0F</h4>
+          <h4>Low: ${day.temp.min}\u00B0F</h4>
           <h4>Wind: ${day.wind_speed} MPH</h4>
           <h4>Humidity: ${day.humidity} %</h4>
         </div>`);
@@ -153,7 +153,6 @@ function oneCallData(citySearch, lat, lon) {
           $("#futurecast").append(dayEl);
         }
 
-        colorUVIBox(data.current.uvi);
         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
         $(`#wicon${i}`).attr("src", iconurl);
       });
@@ -173,8 +172,6 @@ function colorUVIBox(uvi) {
 }
 
 function populateTodayData(citySearch) {
-  $("#today").html("");
-  var today = moment().local().format("MM/DD/YYYY");
   localStorage.setItem("citySearch", citySearch);
 
   // fetch the result from the API to fill today's data
@@ -191,17 +188,6 @@ function populateTodayData(citySearch) {
     })
     .then(function (data) {
       // populate the today element
-      var iconcode = data.weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-      $("#today").html(
-        `<h1>${citySearch} (${today}) <span id="icon"><img id="wicon" src="" alt="Weather icon"></span></h1>
-        <h3>Temp: ${data.main.temp}\u00B0F</h3>
-        <h3>Wind: ${data.wind.speed} MPH</h3>
-        <h3>Humidity: ${data.main.humidity} %</h3>
-        <h3>UV Index: Variable UV Index with Color Here</h3>`
-      );
-      $("#wicon").attr("src", iconurl);
-      // console.log(data);
       oneCallData(citySearch, data.coord.lat, data.coord.lon);
     });
 }
