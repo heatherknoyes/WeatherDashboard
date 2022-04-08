@@ -1,5 +1,4 @@
 //https://openweathermap.org/api/one-call-api
-var citySearch = $("#cityChoice");
 var defaultCity = "New York";
 var APIKey = config.API_KEY;
 
@@ -11,7 +10,7 @@ function init() {
 // need to use event delegation in order to populate the search bar with the button text of the element that the user picks
 $("#submitBtn").on("click", function (event) {
   event.preventDefault();
-
+  var citySearch = $("#cityChoice");
   if (citySearch.val()) {
     var citySearchArray = JSON.parse(localStorage.getItem("citySearch"));
     if (!citySearchArray) {
@@ -26,6 +25,7 @@ $("#submitBtn").on("click", function (event) {
       populatePastSearchCities(citySearchArray);
     }
     getCityData(citySearch.val());
+    $("#cityChoice").val("");
   }
 });
 
