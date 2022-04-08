@@ -17,9 +17,13 @@ main {
 }
 
 .card {
-  min-width: 13rem;
   padding: 1rem;
+  margin: .5rem;
 }
+
+/* .btn-primary {
+  background-color: silver;
+} */
 
 #uvi {
   padding: 0 10px;
@@ -27,6 +31,7 @@ main {
 }
 
 #today {
+  padding: 1rem;
   border: 1px solid #000000;
 }
 
