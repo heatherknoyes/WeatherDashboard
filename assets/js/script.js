@@ -132,7 +132,7 @@ function oneCallData(citySearch, lat, lon) {
         if (i === 0) {
           // populate the today element
           $("#today").html(
-            `<h1>${citySearch} (${today}) <span id="icon"><img id="wicon" src="" alt="Weather icon"></span></h1>
+            `<h1>${citySearch} (${today}) <span id="icon"><img id="wicon${i}" src="" alt="Weather icon"></span></h1>
             <h3>Temp: ${data.current.temp}\u00B0F</h3>
             <h3>Wind: ${data.current.wind_speed} MPH</h3>
             <h3>Humidity: ${data.current.humidity} %</h3>
@@ -144,7 +144,7 @@ function oneCallData(citySearch, lat, lon) {
           // console.log(iconcode);
           var dayEl = $(`<div class="card bg-dark text-light">
           <h3>${dateString}</h3>
-          <h4><span id="icon"><img id="wicon" src="" alt="Weather icon"></span></h4>
+          <h4><span id="icon"><img id="wicon${i}" src="" alt="Weather icon"></span></h4>
           <h4>Temp: XX</h4>
           <h4>Wind: ${day.wind_speed} MPH</h4>
           <h4>Humidity: ${day.humidity} %</h4>
@@ -154,9 +154,8 @@ function oneCallData(citySearch, lat, lon) {
         }
 
         colorUVIBox(data.current.uvi);
-        console.log(iconcode);
         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-        $("#wicon").attr("src", iconurl);
+        $(`#wicon${i}`).attr("src", iconurl);
       });
     });
 }
@@ -206,34 +205,5 @@ function populateTodayData(citySearch) {
       oneCallData(citySearch, data.coord.lat, data.coord.lon);
     });
 }
-
-// function populateFiveDaysData(citySearch, lat, lon) {
-//   // fetch the result from the API to fill today's data
-//   fetch(
-//     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`,
-//     {
-//       // The browser fetches the resource from the remote server without first looking in the cache.
-//       // The browser will then update the cache with the downloaded resource.
-//       cache: "reload",
-//     }
-//   )
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       // populate the today element
-//       // var iconcode = data.weather[0].icon;
-//       // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-//       // $("#today").html(
-//       //   `<h1>${citySearch} (${today}) <span id="icon"><img id="wicon" src="" alt="Weather icon"></span></h1>
-//       //   <h3>Temp: ${data.main.temp}\u00B0F</h3>
-//       //   <h3>Wind: ${data.wind.speed} MPH</h3>
-//       //   <h3>Humidity: ${data.main.humidity} %</h3>
-//       //   <h3>UV Index: Variable UV Index with Color Here</h3>`
-//       // );
-//       // $("#wicon").attr("src", iconurl);
-//       console.log(data);
-//     });
-// }
 
 init();
