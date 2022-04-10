@@ -1,12 +1,14 @@
 # Weather Dashboard
 
-## Your Task
+## Description
 
 Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
 Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
 
-## User Story
+The motivation for this project was to create a calendar that the user can edit and see the current time of day along with events that they have saved. By using jQuery, external APIs, HTML, CSS, and JavaScript I was able to create a dynamic one screen calendar that the user can interact with. I learned how to utilize dynamic HTML elements with jQuery and Javascript and used the users local storage in order to save and delete events without the defaulting the text of the screen for a single instance. The thing I am most proud of with this project is that I was able to implement a delete button to make the UI more user friendly even though it wasn't a part of the requirements. With the completion of this project I fulfilled the following user story and acceptance criteria.
+
+### User Story
 
 ```
 AS A traveler
@@ -14,7 +16,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-## Acceptance Criteria
+### Acceptance Criteria
 
 ```
 GIVEN a weather dashboard with form inputs
@@ -30,72 +32,24 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
 
-## Mock-Up
+This project taught me how to utilize jQuery instead of vanilla JavaScript as well as other APIs like Moment.js in order to manipulate time. In the future, I would like to try to put a dynamic section where the user is able to input what their times for their calendar should be. I would add a submit button as the trigger for a new calendar creation and would try to keep the same events that had already been saved. I also want to try to be able to incorporate a click off functionality so that the event clears out unless you hit the save button.
 
-The following image shows the web application's appearance and functionality:
+## Installation
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
+1. Download all files within the main directory as well as the assets directory to your device.
 
-## Grading Requirements
+2. Open the index.html file in your browser to view the website.
 
-> **Note**: If a homework assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> - A repository that has no code
->
-> - A repository that includes a unique name but nothing else
->
-> - A repository that includes only a README file but nothing else
->
-> - A repository that only includes starter code
+3. If future edits need to be made then the stylesheet can be found under ./assets/css/style.css. The JavaScript can be found under the ./assets/js/script.js.
 
-This homework is graded based on the following criteria:
+## Usage
 
-### Technical Acceptance Criteria: 40%
+The following image shows the web application's appearance in a gif:
 
-- Satisfies all of the above acceptance criteria plus the following:
+![The weather webpage functionality in a GIF.](./assets/images/WorkDaySchedulerGIF.gif)
 
-  - Uses the OpenWeather API to retrieve weather data.
+You can view the deployed application here: https://heatherknoyes.github.io/WorkDayScheduler/
 
-  - Uses `localStorage` to store persistent data.
+## License
 
-### Deployment: 32%
-
-- Application deployed at live URL.
-
-- Application loads with no errors.
-
-- Application GitHub URL submitted.
-
-- GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-- Application user experience is intuitive and easy to navigate.
-
-- Application user interface style is clean and polished.
-
-- Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-- Repository has a unique name.
-
-- Repository follows best practices for file structure and naming conventions.
-
-- Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-- Repository contains multiple descriptive commit messages.
-
-- Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-- The URL of the functional, deployed application.
-
-- The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
-
----
-
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+No license.
