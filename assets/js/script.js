@@ -146,7 +146,6 @@ function oneCallData(citySearch, lat, lon) {
   $("#today").html("");
   $("#futurecast").html("");
   var today = moment().local().format("MM/DD/YYYY");
-  // localStorage.setItem("citySearch", citySearch);
 
   fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${APIKey}&units=imperial`
@@ -189,6 +188,7 @@ function oneCallData(citySearch, lat, lon) {
     });
 }
 
+/* Colors the UV Index in green, yellow, orange, and red tones */
 function colorUVIBox(uvi) {
   if (uvi <= 3) {
     $("#uvi").css("background-color", "green");

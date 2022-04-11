@@ -2,11 +2,7 @@
 
 ## Description
 
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
-
-Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
-
-The motivation for this project was to create a calendar that the user can edit and see the current time of day along with events that they have saved. By using jQuery, external APIs, HTML, CSS, and JavaScript I was able to create a dynamic one screen calendar that the user can interact with. I learned how to utilize dynamic HTML elements with jQuery and Javascript and used the users local storage in order to save and delete events without the defaulting the text of the screen for a single instance. The thing I am most proud of with this project is that I was able to implement a delete button to make the UI more user friendly even though it wasn't a part of the requirements. With the completion of this project I fulfilled the following user story and acceptance criteria.
+The motivation for this project was to create a dynamic webpage that would display weather information for a certain city. This weather information was received by implementing a server side third-party API the OpenWeather One Call API. The user should input a city into the search box which then should display the current information for that city as well as the information for the next five days for weather. By using jQuery, external APIs, HTML, CSS, and JavaScript I was able to create a small dynamic weather page that the user can interact with as well as utilize past searches without needing to input the city in the form field. I learned how to parse through a JSON response from a third-party API in order to create a novel web application with the data that was received. The thing I am most proud of with this project is that I was able to chain multiple API's to get the information needed to create the webpage. With the completion of this project I fulfilled the following user story and acceptance criteria.
 
 ### User Story
 
@@ -32,7 +28,7 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
 
-This project taught me how to utilize jQuery instead of vanilla JavaScript as well as other APIs like Moment.js in order to manipulate time. In the future, I would like to try to put a dynamic section where the user is able to input what their times for their calendar should be. I would add a submit button as the trigger for a new calendar creation and would try to keep the same events that had already been saved. I also want to try to be able to incorporate a click off functionality so that the event clears out unless you hit the save button.
+This project taught me how to utilize API keys to get information from a third-party API instead of providing all of the information beforehand. In the future, I would like to try to make the search for the user more specific to include state and country. In addition, I would like to format the user's input so that it is in a standard format no matter what the user inputs into the form.
 
 ## Installation
 
@@ -46,9 +42,9 @@ This project taught me how to utilize jQuery instead of vanilla JavaScript as we
 
 The following image shows the web application's appearance in a gif:
 
-![The weather webpage functionality in a GIF.](./assets/images/WorkDaySchedulerGIF.gif)
+![The weather webpage functionality in a GIF.](./assets/images/WeatherDashboardGIF.gif)
 
-You can view the deployed application here: https://heatherknoyes.github.io/WorkDayScheduler/
+You can view the deployed application here: https://heatherknoyes.github.io/WeatherDashboard/
 
 ## License
 
